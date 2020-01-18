@@ -6,7 +6,6 @@ function init() {
 
 function addPrimaryBackgroundColourListeners() {
   Array.from(document.querySelectorAll(".radio")).forEach(function(radio) {
-    console.log(radio);
     const color = radio.children[0].id;
     radio.addEventListener("click", e => changePrimaryBackgroundColor(color));
   });
@@ -14,6 +13,9 @@ function addPrimaryBackgroundColourListeners() {
 
 function changePrimaryBackgroundColor(color) {
   chrome.storage.sync.set({ primaryBackgroundColor: { color } }, function() {
-    applyStyle({ color, type: primaryBackgroundColor });
+    applyStyle({
+      classes: [`${color}`, `black-font`],
+      changingElement: "primaryBackgroundColor"
+    });
   });
 }

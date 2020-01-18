@@ -1,4 +1,4 @@
-const catchAll = {
+var catchAll = {
   primaryBackgroundColor: {
     elements: ["body"]
   }

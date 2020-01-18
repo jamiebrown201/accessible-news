@@ -1,17 +1,43 @@
 window.addEventListener("load", init);
 
 let currentPage = "default";
+let availableProviders = { ft, theguardian };
+let currentProvider = catchAll;
 
 async function init() {
   try {
     const pageResult = await getCurrentOrginisation();
     currentPage = pageResult;
+    console.log("currentPage", currentPage);
+    if (availableProviders[currentPage]) {
+      console.log("changing providers", currentProvider);
+      currentProvider = availableProviders[currentPage];
+    }
   } catch (err) {
     return;
   }
 }
 
-function applyStyle(color) {}
+function applyStyle({ classes, changingElement }) {
+  console.log(changingElement);
+  currentProvider[changingElement].elements.forEach(pageClassName => {
+    let targetElement = document.querySelector(pageClassName);
+    if (!targetElement) {
+      chrome.tabs.executeScript(
+        {
+          code: `var targetElement = document.querySelector(\"${pageClassName}\"); [\"${classes.join(
+            '","'
+          )}\"].forEach(className => targetElement.classList.add(className));`
+        },
+        function() {
+          console.log("Element clicked !");
+        }
+      );
+    } else {
+      classes.forEach(className => targetElement.classList.add(className));
+    }
+  });
+}
 
 function getCurrentOrginisation() {
   return new Promise((resolve, reject) => {
