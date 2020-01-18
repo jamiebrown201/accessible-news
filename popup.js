@@ -1,15 +1,19 @@
-let changeColor = document.getElementById("changeColor");
+window.addEventListener("load", init);
 
-chrome.storage.sync.get("color", function(data) {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute("value", data.color);
-});
+function init() {
+  addPrimaryBackgroundColourListeners();
+}
 
-changeColor.onclick = function(element) {
-  let color = element.target.value;
-  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-    chrome.tabs.executeScript(tabs[0].id, {
-      code: 'document.body.style.backgroundColor = "' + color + '";'
-    });
+function addPrimaryBackgroundColourListeners() {
+  Array.from(document.querySelectorAll(".radio")).forEach(function(radio) {
+    console.log(radio);
+    const color = radio.children[0].id;
+    radio.addEventListener("click", e => changePrimaryBackgroundColor(color));
   });
-};
+}
+
+function changePrimaryBackgroundColor(color) {
+  chrome.storage.sync.set({ primaryBackgroundColor: { color } }, function() {
+    applyStyle({ color, type: primaryBackgroundColor });
+  });
+}

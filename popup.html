@@ -2,12 +2,6 @@
 <html>
   <head>
     <style>
-      button {
-        height: 30px;
-        width: 30px;
-        outline: none;
-      }
-
       .blue {
         background-color: #96adfc;
       }
@@ -49,23 +43,31 @@
       }
 
       .color-preview {
-        width: 10px;
-        height: 10px;
+        width: 15px;
+        height: 15px;
+        margin-left: 5px;
       }
 
-      .background-selection {
+      .primary-background-selection {
         display: flex;
+        flex-direction: column;
       }
 
-      .background-selection-option {
+      .primary-background-selection-option {
         margin-right: 10px;
         margin-left: 10px;
         border: 2px solid red;
         border-radius: 5px;
       }
 
+      .radio-label {
+        display: flex;
+      }
+
       .radio {
         margin: 0.5rem;
+        display: flex;
+        width: auto;
       }
       .radio input[type="radio"] {
         position: absolute;
@@ -107,65 +109,72 @@
   </head>
   <body>
     <form action="#">
-      <div class="background-selection">
-        <div class="radio">
-          <input id="blue" name="radio" type="radio" />
-          <label for="blue" class="radio-label">
-            Blue
-            <div class="color-preview blue"></div
-          ></label>
-        </div>
-        <div class="radio">
-          <input id="blue-grey" name="radio" type="radio" />
-          <label for="blue-grey" class="radio-label"
-            >Blue Grey
-            <div class="color-preview blue-grey"></div
-          ></label>
-        </div>
-        <div class="radio">
-          <input id="green" name="radio" type="radio" />
-          <label for="green" class="radio-label"
-            >Green
-            <div class="color-preview green"></div
-          ></label>
-        </div>
-        <div class="radio">
-          <input id="grey" name="radio" type="radio" />
-          <label for="grey" class="radio-label"
-            >Grey
-            <div class="color-preview grey"></div
-          ></label>
-        </div>
-        <div class="radio">
-          <input id="peach" name="radio" type="radio" />
-          <label for="peach" class="radio-label"
-            >Peach
-            <div class="color-preview peach"></div
-          ></label>
-        </div>
-        <div class="radio">
-          <input id="red" name="radio" type="radio" />
-          <label for="red" class="radio-label"
-            >Red
-            <div class="color-preview red"></div
-          ></label>
-        </div>
-        <div class="radio">
-          <input id="turquoise" name="radio" type="radio" />
-          <label for="turquoise" class="radio-label"
-            >Turquoise
-            <div class="color-preview turquoise"></div
-          ></label>
-        </div>
-        <div class="radio">
-          <input id="yellow" name="radio" type="radio" />
-          <label for="yellow" class="radio-label"
-            >Yellow
-            <div class="color-preview yellow"></div
-          ></label>
+      <div class="primary-background">
+        <h2 class="form-section-header">Primary background color</h2>
+        <div class="primary-background-selection">
+          <div class="radio">
+            <input id="blue" name="radio" type="radio" />
+            <label for="blue" class="radio-label">
+              Blue
+              <div class="color-preview blue"></div
+            ></label>
+          </div>
+          <div class="radio">
+            <input id="blue-grey" name="radio" type="radio" />
+            <label for="blue-grey" class="radio-label"
+              >Blue Grey
+              <div class="color-preview blue-grey"></div
+            ></label>
+          </div>
+          <div class="radio">
+            <input id="green" name="radio" type="radio" />
+            <label for="green" class="radio-label"
+              >Green
+              <div class="color-preview green"></div
+            ></label>
+          </div>
+          <div class="radio">
+            <input id="grey" name="radio" type="radio" />
+            <label for="grey" class="radio-label"
+              >Grey
+              <div class="color-preview grey"></div
+            ></label>
+          </div>
+          <div class="radio">
+            <input id="peach" name="radio" type="radio" />
+            <label for="peach" class="radio-label"
+              >Peach
+              <div class="color-preview peach"></div
+            ></label>
+          </div>
+          <div class="radio">
+            <input id="red" name="radio" type="radio" />
+            <label for="red" class="radio-label"
+              >Red
+              <div class="color-preview red"></div
+            ></label>
+          </div>
+          <div class="radio">
+            <input id="turquoise" name="radio" type="radio" />
+            <label for="turquoise" class="radio-label"
+              >Turquoise
+              <div class="color-preview turquoise"></div
+            ></label>
+          </div>
+          <div class="radio">
+            <input id="yellow" name="radio" type="radio" />
+            <label for="yellow" class="radio-label"
+              >Yellow
+              <div class="color-preview yellow"></div
+            ></label>
+          </div>
         </div>
       </div>
     </form>
+    <script src="./config/ft.js"></script>
+    <script src="./config/theGuardian.js"></script>
+    <script src="./config/default.js"></script>
+    <script src="main.js"></script>
     <script src="popup.js"></script>
   </body>
 </html>

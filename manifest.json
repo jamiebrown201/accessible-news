@@ -4,10 +4,6 @@
   "description": "Build an Extension!",
   "permissions": ["activeTab", "declarativeContent", "storage"],
   "options_page": "options.html",
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
   "content_scripts": [
     {
       "matches": ["https://www.ft.com/*", "https://mail.google.com/*"],

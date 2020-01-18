@@ -1,11 +1,45 @@
 window.addEventListener("load", init);
 
-function init() {
-  chrome.storage.sync.set({ config: "hello" }, function() {
-    console.log("Value is set to " + value);
-  });
+let currentPage = "default";
 
-  console.log("hello", chrome.storage);
-  const body = document.querySelector("body");
-  body.classList.add("accessible-news-background-color");
+async function init() {
+  try {
+    const pageResult = await getCurrentOrginisation();
+    currentPage = pageResult;
+  } catch (err) {
+    return;
+  }
+}
+
+function applyStyle(color) {}
+
+function getCurrentOrginisation() {
+  return new Promise((resolve, reject) => {
+    if (chrome.tabs) {
+      chrome.tabs.query(
+        { active: true, windowId: chrome.windows.WINDOW_ID_CURRENT },
+        tabs => {
+          resolve(domainFromUrl(tabs[0].url));
+        }
+      );
+    } else {
+      reject(new Error("No url match"));
+    }
+  });
+}
+
+function domainFromUrl(url) {
+  var result;
+  var match;
+  if (
+    (match = url.match(
+      /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n\?\=]+)/im
+    ))
+  ) {
+    result = match[1];
+    if ((match = result.match(/^[^\.]+\.(.+\..+)$/))) {
+      result = match[1];
+    }
+  }
+  return result.split(".")[0];
 }
