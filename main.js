@@ -21,8 +21,6 @@ async function init() {
 
 async function initPage() {
   const storage = await getStorage();
-  console.log(storage);
-  console.log(currentProvider);
   Object.keys(storage).forEach(key => {
     if (currentProvider[key]) {
       applyStyle({
@@ -39,7 +37,7 @@ function applyStyle({ classes, changingElement }) {
     if (!targetElement) {
       chrome.tabs.executeScript(
         {
-          code: `var targetElement = document.querySelector(\"${pageClassName}\"); [\"${classes.join(
+          code: `var targetElement = document.querySelector(\"${pageClassName}\"); targetElement.setAttribute( "class", Array.from(targetElement.classList) .filter(className => !className.includes("accessibility-news")) .join(" ") ); [\"${classes.join(
             '","'
           )}\"].forEach(className => targetElement.classList.add(className));`
         },
@@ -48,6 +46,12 @@ function applyStyle({ classes, changingElement }) {
         }
       );
     } else {
+      targetElement.setAttribute(
+        "class",
+        Array.from(targetElement.classList)
+          .filter(className => !className.includes("accessibility-news"))
+          .join(" ")
+      );
       classes.forEach(className => targetElement.classList.add(className));
     }
   });

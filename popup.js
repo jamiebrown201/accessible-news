@@ -1,22 +1,36 @@
 window.addEventListener("load", init);
 
-function init() {
-  addPrimaryBackgroundColourListeners();
+async function init() {
+  await addPrimaryBackgroundColourListeners();
 }
 
-function addPrimaryBackgroundColourListeners() {
-  Array.from(document.querySelectorAll(".radio")).forEach(function(radio) {
+async function addPrimaryBackgroundColourListeners() {
+  Array.from(document.querySelectorAll(".radio")).forEach(async radio => {
     const color = radio.children[0].id;
-    radio.addEventListener("click", e => changePrimaryBackgroundColor(color));
+    const storage = await getStorage();
+    if (storage.primaryBackgroundColor) {
+      if (color === storage.primaryBackgroundColor.color) {
+        radio.children[0].checked = true;
+      }
+    }
+    radio.addEventListener("click", e => {
+      document.getElementById(color).checked;
+      changePrimaryBackgroundColor(color);
+    });
   });
 }
 
 function changePrimaryBackgroundColor(color) {
   chrome.storage.sync.set(
-    { primaryBackgroundColor: { classes: [`${color}`, `black-font`] } },
+    {
+      primaryBackgroundColor: {
+        classes: [`${color}`, `accessibility-news-black-font`],
+        color
+      }
+    },
     function() {
       applyStyle({
-        classes: [`${color}`, `black-font`],
+        classes: [`${color}`, `accessibility-news-black-font`],
         changingElement: "primaryBackgroundColor"
       });
     }
