@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Dyslexie";
+  src: url("./fonts/Dyslexie-Bold.woff2") format("woff2"),
+    url("./fonts/Dyslexie-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Dyslexie";
+  src: url("./fonts/Dyslexie-Regular.woff2") format("woff2"),
+    url("./fonts/Dyslexie-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .accessibility-news-blue * {
   background-color: #96adfc;
 }
