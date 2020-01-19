@@ -21,25 +21,33 @@ async function init() {
 
 async function initPage() {
   const storage = await getStorage();
+  console.log("storage", storage);
   Object.keys(storage).forEach(key => {
     if (currentProvider[key]) {
       applyStyle({
         classes: storage[key].classes,
-        changingElement: key
+        changingElement: key,
+        active: storage[key].active
       });
     }
   });
 }
 
-function applyStyle({ classes, changingElement }) {
+function applyStyle({ classes, changingElement, active }) {
+  const customRules = currentProvider[changingElement].customRules;
   currentProvider[changingElement].elements.forEach(pageClassName => {
     let targetElement = document.querySelector(pageClassName);
     if (!targetElement) {
+      console.log(customRules);
       chrome.tabs.executeScript(
         {
-          code: `var targetElement = document.querySelector(\"${pageClassName}\"); targetElement.setAttribute( "class", Array.from(targetElement.classList) .filter(className => !className.includes("accessibility-news")) .join(" ") ); [\"${classes.join(
+          code: `var targetElement = document.querySelector(\"${pageClassName}\"); targetElement.setAttribute( "class", Array.from(targetElement.classList) .filter(className => !className.includes("accessibility-news-${changingElement}")) .join(" ") );   if (${active}) { [\"${classes.join(
             '","'
-          )}\"].forEach(className => targetElement.classList.add(className));`
+          )}\"].forEach(className => targetElement.classList.add(className))} if (${JSON.stringify(
+            customRules
+          )}) { ${JSON.stringify(
+            customRules
+          )}.forEach(({ classIdentifier, classBeingAdded }) => { document .querySelector(classIdentifier) .classList.add(classBeingAdded); }); };`
         },
         function() {
           console.log("Element clicked !");
@@ -49,10 +57,22 @@ function applyStyle({ classes, changingElement }) {
       targetElement.setAttribute(
         "class",
         Array.from(targetElement.classList)
-          .filter(className => !className.includes("accessibility-news"))
+          .filter(
+            className =>
+              !className.includes(`accessibility-news-${changingElement}`)
+          )
           .join(" ")
       );
-      classes.forEach(className => targetElement.classList.add(className));
+      if (active) {
+        classes.forEach(className => targetElement.classList.add(className));
+      }
+      if (customRules) {
+        customRules.forEach(({ classIdentifier, classBeingAdded }) => {
+          document
+            .querySelector(classIdentifier)
+            .classList.add(classBeingAdded);
+        });
+      }
     }
   });
 }

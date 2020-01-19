@@ -14,51 +14,81 @@
   font-style: normal;
 }
 
-.accessibility-news-font-dyslexie {
-  font-family: "Dyslexie", sans-serif;
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 304px;
 }
 
-.accessibility-news-blue * {
+.accessibility-news-hidden {
+  display: none;
+}
+
+.accessibility-news-logo {
+  height: 63px;
+}
+
+.accessibility-news-font-dyslexie * {
+  font-family: "Dyslexie", sans-serif !important;
+}
+
+.accessibility-news-font-line-height,
+.accessibility-news-font-line-height * {
+  line-height: 55px !important;
+}
+
+.accessibility-news-primaryBackgroundColor-blue,
+.accessibility-news-primaryBackgroundColor-blue * {
   background-color: #96adfc;
 }
 
-.accessibility-news-blue-grey * {
+.accessibility-news-primaryBackgroundColor-blue-grey,
+.accessibility-news-primaryBackgroundColor-blue-grey * {
   background-color: #dbe1f1;
 }
 
-.accessibility-news-green * {
+.accessibility-news-primaryBackgroundColor-green,
+.accessibility-news-primaryBackgroundColor-green * {
   background-color: #a8f29a;
 }
-
-.accessibility-news-grey * {
+.accessibility-news-primaryBackgroundColor-grey,
+.accessibility-news-primaryBackgroundColor-grey * {
   background-color: #d8d3d6;
 }
 
-.accessibility-news-orange * {
+.accessibility-news-primaryBackgroundColor-orange,
+.accessibility-news-primaryBackgroundColor-orange * {
   background-color: #eddd6e;
 }
 
-.accessibility-news-peach * {
+.accessibility-news-primaryBackgroundColor-peach,
+.accessibility-news-primaryBackgroundColor-peach * {
   background-color: #edd1b0;
 }
 
-.accessibility-news-purple * {
+.accessibility-news-primaryBackgroundColor-purple,
+.accessibility-news-primaryBackgroundColor-purple * {
   background-color: #b987dc;
 }
 
-.accessibility-news-red * {
+.accessibility-news-primaryBackgroundColor-red,
+.accessibility-news-primaryBackgroundColor-red * {
   background-color: #e0a6aa;
 }
 
-.accessibility-news-turquoise * {
+.accessibility-news-primaryBackgroundColor-turquoise,
+.accessibility-news-primaryBackgroundColor-turquoise * {
   background-color: #a5f7e1;
 }
 
-.accessibility-news-yellow * {
+.accessibility-news-primaryBackgroundColor-yellow,
+.accessibility-news-primaryBackgroundColor-yellow * {
   background-color: #f8fd89;
 }
 
-.accessibility-news-black-font * {
+.accessibility-news-primaryBackgroundColor-black-font,
+.accessibility-news-primaryBackgroundColor-black-font * {
   color: #000000 !important;
 }
 

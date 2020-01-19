@@ -4,6 +4,12 @@ var ft = {
     elements: [".article__content", "figcaption", ".topper__content"]
   },
   font: {
-    elements: ["body"]
+    elements: [".article__content", "figcaption", ".topper__content"],
+    customRules: [
+      {
+        classIdentifier: ".article-classifier__gap",
+        classBeingAdded: "accessibility-news-font-line-height"
+      }
+    ]
   }
 };

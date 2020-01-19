@@ -4,74 +4,168 @@
     <link rel="stylesheet" type="text/css" href="main.css" />
   </head>
   <body>
+    <div class="logo-container">
+      <img src="./images/logo.png" alt="logo" class="accessibility-news-logo" />
+    </div>
     <form action="#">
       <div class="primary-background">
         <h2 class="form-section-header">Primary background color</h2>
         <div class="primary-background-selection">
           <div class="radio">
-            <input id="accessibility-news-blue" name="radio" type="radio" />
-            <label for="accessibility-news-blue" class="radio-label">
+            <input id="none" name="radio" type="radio" />
+            <label for="none" class="radio-label">
+              None
+              <div class="color-preview none"></div
+            ></label>
+          </div>
+          <div class="radio">
+            <input
+              id="accessibility-news-primaryBackgroundColor-blue"
+              name="radio"
+              type="radio"
+            />
+            <label
+              for="accessibility-news-primaryBackgroundColor-blue"
+              class="radio-label"
+            >
               Blue
-              <div class="color-preview accessibility-news-blue"></div
+              <div
+                class="color-preview accessibility-news-primaryBackgroundColor-blue"
+              ></div
             ></label>
           </div>
           <div class="radio">
             <input
-              id="accessibility-news-blue-grey"
+              id="accessibility-news-primaryBackgroundColor-blue-grey"
               name="radio"
               type="radio"
             />
-            <label for="accessibility-news-blue-grey" class="radio-label"
+            <label
+              for="accessibility-news-primaryBackgroundColor-blue-grey"
+              class="radio-label"
               >Blue Grey
-              <div class="color-preview accessibility-news-blue-grey"></div
-            ></label>
-          </div>
-          <div class="radio">
-            <input id="accessibility-news-green" name="radio" type="radio" />
-            <label for="accessibility-news-green" class="radio-label"
-              >Green
-              <div class="color-preview accessibility-news-green"></div
-            ></label>
-          </div>
-          <div class="radio">
-            <input id="accessibility-news-grey" name="radio" type="radio" />
-            <label for="accessibility-news-grey" class="radio-label"
-              >Grey
-              <div class="color-preview accessibility-news-grey"></div
-            ></label>
-          </div>
-          <div class="radio">
-            <input id="accessibility-news-peach" name="radio" type="radio" />
-            <label for="accessibility-news-peach" class="radio-label"
-              >Peach
-              <div class="color-preview accessibility-news-peach"></div
-            ></label>
-          </div>
-          <div class="radio">
-            <input id="accessibility-news-red" name="radio" type="radio" />
-            <label for="accessibility-news-red" class="radio-label"
-              >Red
-              <div class="color-preview accessibility-news-red"></div
+              <div
+                class="color-preview accessibility-news-primaryBackgroundColor-blue-grey"
+              ></div
             ></label>
           </div>
           <div class="radio">
             <input
-              id="accessibility-news-turquoise"
+              id="accessibility-news-primaryBackgroundColor-green"
               name="radio"
               type="radio"
             />
-            <label for="accessibility-news-turquoise" class="radio-label"
-              >Turquoise
-              <div class="color-preview accessibility-news-turquoise"></div
+            <label
+              for="accessibility-news-primaryBackgroundColor-green"
+              class="radio-label"
+              >Green
+              <div
+                class="color-preview accessibility-news-primaryBackgroundColor-green"
+              ></div
             ></label>
           </div>
           <div class="radio">
-            <input id="accessibility-news-yellow" name="radio" type="radio" />
-            <label for="accessibility-news-yellow" class="radio-label"
-              >Yellow
-              <div class="color-preview accessibility-news-yellow"></div
+            <input
+              id="accessibility-news-primaryBackgroundColor-grey"
+              name="radio"
+              type="radio"
+            />
+            <label
+              for="accessibility-news-primaryBackgroundColor-grey"
+              class="radio-label"
+              >Grey
+              <div
+                class="color-preview accessibility-news-primaryBackgroundColor-grey"
+              ></div
             ></label>
           </div>
+          <div class="radio">
+            <input
+              id="accessibility-news-primaryBackgroundColor-peach"
+              name="radio"
+              type="radio"
+            />
+            <label
+              for="accessibility-news-primaryBackgroundColor-peach"
+              class="radio-label"
+              >Peach
+              <div
+                class="color-preview accessibility-news-primaryBackgroundColor-peach"
+              ></div
+            ></label>
+          </div>
+          <div class="radio">
+            <input
+              id="accessibility-news-primaryBackgroundColor-red"
+              name="radio"
+              type="radio"
+            />
+            <label
+              for="accessibility-news-primaryBackgroundColor-red"
+              class="radio-label"
+              >Red
+              <div
+                class="color-preview accessibility-news-primaryBackgroundColor-red"
+              ></div
+            ></label>
+          </div>
+          <div class="radio">
+            <input
+              id="accessibility-news-primaryBackgroundColor-turquoise"
+              name="radio"
+              type="radio"
+            />
+            <label
+              for="accessibility-news-primaryBackgroundColor-turquoise"
+              class="radio-label"
+              >Turquoise
+              <div
+                class="color-preview accessibility-news-primaryBackgroundColor-turquoise"
+              ></div
+            ></label>
+          </div>
+          <div class="radio">
+            <input
+              id="accessibility-news-primaryBackgroundColor-yellow"
+              name="radio"
+              type="radio"
+            />
+            <label
+              for="accessibility-news-primaryBackgroundColor-yellow"
+              class="radio-label"
+              >Yellow
+              <div
+                class="color-preview accessibility-news-primaryBackgroundColor-yellow"
+              ></div
+            ></label>
+          </div>
+        </div>
+      </div>
+      <div class="font">
+        <h2>Font selection</h2>
+        <select id="font-selection">
+          <option value="none">None</option>
+          <option class="accessibility-news-font-dyslexie" value="dyslexie"
+            >Dyslexie</option
+          >
+        </select>
+      </div>
+      <div class="accessibility-news-audio">
+        <h2>Audio</h2>
+        <input
+          type="button"
+          class="accessibility-news-get-audio"
+          value="Get audio"
+        />
+        <div class="accessibility-news-play-audio accessibility-news-hidden">
+          <audio controls>
+            <source
+              class="accessibility-news-audio-source"
+              src="horse.mp3"
+              type="audio/mpeg"
+            />
+            Your browser does not support the audio element.
+          </audio>
         </div>
       </div>
     </form>
