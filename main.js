@@ -7,19 +7,33 @@ let currentProvider = catchAll;
 async function init() {
   try {
     const pageResult = await getCurrentOrginisation();
-    currentPage = pageResult;
-    console.log("currentPage", currentPage);
-    if (availableProviders[currentPage]) {
-      console.log("changing providers", currentProvider);
-      currentProvider = availableProviders[currentPage];
+    currentDomain = pageResult.domain;
+    if (availableProviders[currentDomain]) {
+      currentProvider = availableProviders[currentDomain];
+    }
+    if (pageResult.source === "main") {
+      await initPage();
     }
   } catch (err) {
     return;
   }
 }
 
+async function initPage() {
+  const storage = await getStorage();
+  console.log(storage);
+  console.log(currentProvider);
+  Object.keys(storage).forEach(key => {
+    if (currentProvider[key]) {
+      applyStyle({
+        classes: storage[key].classes,
+        changingElement: key
+      });
+    }
+  });
+}
+
 function applyStyle({ classes, changingElement }) {
-  console.log(changingElement);
   currentProvider[changingElement].elements.forEach(pageClassName => {
     let targetElement = document.querySelector(pageClassName);
     if (!targetElement) {
@@ -45,11 +59,11 @@ function getCurrentOrginisation() {
       chrome.tabs.query(
         { active: true, windowId: chrome.windows.WINDOW_ID_CURRENT },
         tabs => {
-          resolve(domainFromUrl(tabs[0].url));
+          resolve({ source: "popup", domain: domainFromUrl(tabs[0].url) });
         }
       );
     } else {
-      reject(new Error("No url match"));
+      resolve({ source: "main", domain: domainFromUrl(window.location.host) });
     }
   });
 }
@@ -68,4 +82,12 @@ function domainFromUrl(url) {
     }
   }
   return result.split(".")[0];
+}
+
+function getStorage() {
+  return new Promise((resolve, reject) => {
+    chrome.storage.sync.get(null, function(items) {
+      resolve(items);
+    });
+  });
 }

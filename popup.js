@@ -12,10 +12,13 @@ function addPrimaryBackgroundColourListeners() {
 }
 
 function changePrimaryBackgroundColor(color) {
-  chrome.storage.sync.set({ primaryBackgroundColor: { color } }, function() {
-    applyStyle({
-      classes: [`${color}`, `black-font`],
-      changingElement: "primaryBackgroundColor"
-    });
-  });
+  chrome.storage.sync.set(
+    { primaryBackgroundColor: { classes: [`${color}`, `black-font`] } },
+    function() {
+      applyStyle({
+        classes: [`${color}`, `black-font`],
+        changingElement: "primaryBackgroundColor"
+      });
+    }
+  );
 }
